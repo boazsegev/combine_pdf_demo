@@ -1,0 +1,917 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Place all the styles related to the Application here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* BASICS */
+$responsive_limit: 46em;
+
+// fonts: variant for a standard font would be: font-family: helvetica, arial, times, david
+$content_font: helvetica, arial, times, david;
+$header_font: 'SonySketchEF-Bold';
+$alert_font: 'Kinryu_No14';
+$menu_font: 'Pfennig';
+
+// colors values
+$content_background: #eee;
+$content_color: #333;
+$form_background: #ddd;
+$form_color: #111;
+$table_header_background: #999;
+$table_header_color: #fff;
+$header_background: #777;
+$header_color: #fff;
+$link_hover_background: #888;
+$link_hover_color: #006;
+$link_color: #003;
+$link_hover_background_inverse: inherit;
+$link_hover_color_inverse: #bbf;
+$link_color_inverse: #eef;
+$notice_background: #402;
+$notice_color: #daa;
+
+// content margins
+$large_screen_margin: 15%;
+$small_screen_margin: 1em;
+
+@font-face {
+  font-family: 'Pfennig';
+  src: url('/assets/Pfennig.eot?#iefix') format('embedded-opentype'),  url('/assets/Pfennig.woff') format('woff'), url('/assets/Pfennig.ttf')  format('truetype'), url('/assets/Pfennig.svg#Pfennig') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SonySketchEF-Bold';
+  src: url('SonySketchEF-Bold.eot?#iefix') format('embedded-opentype'),  url('SonySketchEF-Bold.woff') format('woff'), url('SonySketchEF-Bold.ttf')  format('truetype'), url('SonySketchEF-Bold.svg#SonySketchEF-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Kinryu_No14';
+  src: url('Kinryu_No14.eot?#iefix') format('embedded-opentype'),  url('Kinryu_No14.woff') format('woff'), url('Kinryu_No14.ttf')  format('truetype'), url('Kinryu_No14.svg#Kinryu_No14') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Cardo';
+  src: url('Cardo.eot?#iefix') format('embedded-opentype'),  url('Cardo.woff') format('woff'), url('Cardo.ttf')  format('truetype'), url('Cardo.svg#Cardo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-size: 14px;
+  font-family: $content_font;
+}
+h1, h2, h3
+{
+  font-family: $header_font;
+  font-size:1.2em;
+  border-radius: 0.5em;
+}
+h1
+{
+  font-size: 1.5em;
+  text-align: center;
+}
+h2
+{
+  text-align: left;  
+}
+h3
+{
+  text-align: right;
+}
+
+/* HEBREW LOCALE Basics */
+body.he
+{
+  direction: rtl;
+  h2
+  {
+    text-align: right;
+  }
+  h3
+  {
+    text-align: left;
+  }
+}
+/* CONVERT UL INTO MENU - CLASSIC & BASIC - PRE STYLES*/
+
+#nav {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+  }
+  li {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    a {
+      display: block;
+      min-width: 8em;
+    }
+  }
+  ul li ul {
+    max-height: 0em;
+    transition: max-height 0.5s, background 0.5s;
+    overflow: hidden;
+  }
+  li {
+    &:hover ul {
+      max-height: 20em;
+    }
+    ul {
+      li {
+        display: block;
+      }
+      a {
+        width: auto;
+      }
+    }
+  }
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+#menu {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
+
+/* STYLING THE MENU */
+
+#menu, #nav {
+  text-align: left;
+  background: #101;
+}
+// Hebrew locale issue
+body.he #menu, body.he #nav
+{
+  text-align: right;  
+}
+#nav {
+  position: absolute;
+  top: 0;
+}
+
+#menu {
+  width: 100%;
+  left: 0;
+  top: 0;
+  border-bottom: #444 solid 3px;
+}
+
+#nav li {
+  a {
+    font-family: $menu_font;
+    color: #eef;
+    background: #666;
+    border-left: #888 solid 2px;
+    border-right: #888 solid 2px;
+    border-radius: 0.2em;
+    height: 1em;
+    text-align: center;
+    line-height: 1em;
+    padding: 0.5em 0;
+    margin: 0;
+    text-decoration: none;
+    transition: background 0.5s, border-right 0.5s, border-left 0.5s, border-radius 0.5s;
+  }
+  &:hover {
+    a {
+      background: #444;
+      border-left: #aaa solid 2px;
+      border-right: #aaa solid 2px;
+      border-radius: 0.5em;
+    }
+    ul a {
+      background: #777;
+      border-left: #aaa solid 2px;
+      border-right: #aaa solid 2px;
+      border-radius: 0.3em;
+      &:hover {
+        background: #333;
+        border-left: #ddd solid 2px;
+        border-right: #ddd solid 2px;
+        border-radius: 0.7em;
+      }
+    }
+    ul li:last-child a
+    {
+      border-bottom: #aaa solid 2px;
+      &:hover {
+      border-bottom: #fff solid 2px;
+      }
+    }
+  }
+}
+
+/* MENU - RESPONSIVE RELATED */
+
+/*Style 'show menu' label button and hide it by default - Edit This*/
+
+.show-menu {
+  z-index: 1001;
+  font-family: $content_font;
+  text-decoration: none;
+  color: #aaa;
+  background: url('nav-icon.png') no-repeat top left;
+  background-size: 100% 100%;
+  text-align: center;
+  padding: 1.5em;
+  display: none;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: auto;
+}
+
+body.he .show-menu
+{
+  left: inherit;
+  right: 5px;  
+}
+/*Hide checkbox*/
+
+input[type=checkbox]#show-menu {
+  display: none;
+  position: absolute;
+}
+
+/* EDIT accurding to menu size */
+@media screen and (max-width: $responsive_limit) {
+  /* Nav and menu basic adjustments */
+  /*Make dropdown links appear inline*/
+  #nav ul {
+    position: absolute;
+    top: 0;
+    li ul {
+      position: static;
+    }
+  }
+  #menu {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+  /*Create vertical spacing*/
+  #nav li {
+    float: left;
+    width: 100%;
+    a {
+      width: 100%;
+    }
+  }
+  /*Make all menu links full width*/
+  /*Display 'show menu' link*/
+  .show-menu {
+    display: block;
+  }
+
+
+
+
+
+  /*ANIMATION STYLING*/
+  #menu {
+    opacity: 0;
+    /*
+    // FOR SIDE MENU SLIDE, PUT:
+    left: -110%;
+    // FOR RTL DOCUMENTS CHANGE THIS TO +110% like this:
+    left: 110%;
+    overflow: hidden;
+    */
+    /* MAX-HEIGHT IS FOR TOP TO BOTTOM ANNIMATION */
+    left: -110%;
+    transition: all 1s;
+  }
+  body.he #menu {
+    left: 110%;
+  }
+  /*Show menu when invisible checkbox is checked*/
+  input[type=checkbox]:checked#show-menu ~ {
+    #nav #menu {
+      opacity: 1;
+      left: 0;
+    }
+    #content! {}
+  }
+  #nav {
+    a {
+      border-left: 0 !important;
+      border-right: 0 !important;
+      border-bottom: 0 !important;
+    }
+    li a {
+      height: 1em;
+      text-align: center;
+      line-height: 1em;
+      padding: 1em 0;
+      margin: 0;
+      text-decoration: none;
+      transition: background 0.5s, border-right 0.5s, border-left 0.5s, border-radius 0.5s;
+    }
+  }
+  /* STYLING NAV (none at the moment)*/
+  #nav, #menu
+  {
+    font-size: 16px;
+  }
+}
+
+
+
+
+
+/* STYLING THE CONTENT */
+
+html, body {
+  color: $content_color;
+  background: $content_background;
+  height: auto;
+}
+.hide
+{
+  display: none !important;
+}
+span.en
+{
+  direction: ltr;
+  display: inline-block;
+  text-align: left;
+  width: auto;
+}
+#content {
+  background: $content_background;
+  color: $content_color;
+  min-height: 100%;
+  padding: 4em 1.5em;
+  margin: 0 1em;
+  overflow-x: hidden;
+#  width: calc(100%-2em);
+  box-sizing: border-box;
+  h1, h2, h3 {
+    color: $header_color;
+    background: $header_background;
+    padding: 0.3em;
+    margin: 0.2em 0;
+  }
+  h1 {
+    padding: 0.5em;
+    margin: 0;
+  }
+  h2 {
+    padding: 0.2em 1em;
+  }
+  h3 {
+    padding: 0.2em 1em;
+  }
+  p {
+    padding: 0.5em;
+    margin: 0;
+  }
+  a {
+    color: $link_color;
+    text-decoration: none;
+    &:hover {
+      color: $link_hover_color;
+      text-decoration: underline;
+      background: $link_hover_background;
+      position: relative;
+      top:1px; left:2px;
+    }
+  }
+  body.he a:hover {
+    top:-1px; left:2px;
+  }
+
+  h1 a, h2 a, h3 a, table th a {
+    color: $link_color_inverse;
+    &:hover {
+      background: $link_hover_background_inverse;
+      color: $link_hover_color_inverse;      
+    }
+  }
+  #notice {
+    background: $notice_background;
+    color: $notice_color;
+    margin: 0.3em  $large_screen_margin;
+    padding: 1em 0.5em;
+    text-align: center;
+    border-radius: 1em;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+  .action_button {
+    width: auto;
+    display: inline-block;
+    padding: 0.2em 1em;
+    background: $table_header_background;
+    border: #555 solid 1px;
+    border-radius: 0.5em;
+    text-decoration: none;
+    &:hover {
+      background: $header_background;
+      box-shadow: 5px 5px 5px #99a;
+      text-decoration: none;
+    }
+  }
+  .action_button_hover {
+    width: auto;
+    display: block;
+    position: absolute;
+    left: 86%;
+    top: inherit;
+    padding: 0.5em 1em;
+    background: $table_header_background;
+    border: #555 solid 3px;
+    border-radius: 1em;
+    text-decoration: none;
+    &:hover {
+      position: absolute;
+      width: auto;
+      background: $header_background;
+      box-shadow: 5px 5px 5px #99a;
+      text-decoration: none;
+      left: 86%;
+      top: inherit;
+    }
+  }
+  .print, .no_print
+  {
+    text-align: justify;
+    display: block;
+    margin: 0 $large_screen_margin;
+    background: $form_background;
+    color: $form_color;
+    // overflow-x: hidden;
+    p {
+      padding: 0.2em;
+      margin: 0.5em 0;
+    }
+    table
+    {
+      width: 100%;
+      table-layout: fixed;
+      border-collapse: collapse;
+      th
+      {
+        background: $table_header_background;
+        color: $table_header_color;
+        text-align: center;
+      }
+      tr
+      {
+        border-collapse: collapse;
+      }
+      td
+      {
+        width: 2%;
+        padding: 1px 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-collapse: collapse;
+        border-top: $header_background dotted 1px;
+        border-bottom: $header_background dotted 1px;        
+      }
+      .en
+      {
+        direction: ltr;
+      }
+    }
+  }
+}
+
+body.he #content a.action_button_hover {
+  left: 1em;
+  &:hover {
+    left: 1em;
+  }
+}
+
+/* STYLING FORMS */
+
+form {
+  text-align: justify;
+  display: block;
+  margin: 0 $large_screen_margin;
+  background: $form_background;
+  color: $form_color;
+  p {
+    padding: 0.2em;
+    margin: 0.5em 0;
+  }
+  input[type='submit']
+  {
+    margin: 0.5em 20%;
+    width:60%;
+  }
+  table
+  {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    th
+    {
+      background: $table_header_background;
+      color: $table_header_color;
+    }
+    td
+    {
+      width: 2%;
+      border-collapse: collapse;
+      border-top: $header_background dotted 1px;
+      border-bottom: $header_background dotted 1px;      
+      padding: 1px 2px;
+    }
+    tr
+    {
+      border-collapse: collapse;
+    }
+    .en
+    {
+      direction: ltr;
+    }
+    input, select {
+      width: 100%;
+      margin: 0.5em 0;
+      padding: 0;
+    }
+    .no_resize input, .no_resize select
+    {
+      width: auto;
+      margin: 0.5em 0;
+      padding: inherit;
+    }
+  }
+  .field, .field_with_errors {
+    width: 100%;
+    display: block;
+    text-align: justify;
+    padding: 0.5em 0;
+    margin: 0;
+    margin-bottom: 0;
+    vertical-align: top;
+    border-collapse: collapse;
+    border-top: $header_background dotted 1px;
+    border-bottom: $header_background dotted 1px;
+    label {
+      width: 34%;
+      margin: 0 2%;
+      padding: 0;
+      display: inline-block;
+      vertical-align: top;
+    }
+    input {
+      width: 60%;
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+      vertical-align: top;
+    }
+    select {
+      width: 60%;
+      margin: 0;
+      padding: 0;
+    }
+    .no_resize input, .no_resize select
+    {
+      width: auto;
+      margin: inherit;
+      padding: inherit;
+    }
+    textarea {
+      width: 98%;
+      padding: 0;
+      margin: 0;
+      height: 5em;
+      display: block;
+    }
+  }
+  .en
+  {
+    input, textarea
+    {
+  	 text-align: left;
+     direction: ltr;
+    }
+  }
+}
+
+table.one_liners
+{
+  table-layout: fixed !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  text-overflow: ellipsis;
+  overflow: none;
+  td, th
+  {
+    width: inherit;
+    max-width: 10%;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+  }
+}
+table.user_hours_summery, table.client_hours_summery
+{
+  table-layout: fixed !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  font-size: 0.9em;
+  text-overflow: ellipsis;
+  overflow: none;
+  td, th
+  {
+    width: 5% !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: justify !important;
+  }
+  td:first-child, th:first-child
+  {
+    width: 10% !important;
+  }
+}
+
+table.cases_list
+{
+  table-layout: fixed !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  text-overflow: ellipsis;
+  overflow: none;
+  td, th
+  {
+    width: 5% !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: justify !important;
+  }
+  td:first-child, th:first-child
+  {
+    width: 10% !important;
+  }
+}
+
+
+table.hours
+{
+  table-layout: fixed;
+  max-width: 100% !important;
+  width: 100% !important;
+  text-overflow: ellipsis;
+  overflow: none;
+  font-size: 0.9em;
+  td, th
+  {
+    width: 19% !important;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    text-align: justify !important;
+  }
+  td:first-child, th:first-child
+  {
+    width: 12% !important;
+  }
+  td:last-child, th:last-child
+  {
+    width: 52% !important;
+  }
+}
+
+
+
+
+
+
+
+/* STYLING BATES */
+
+ul.bates_file_table_list, ol.bates_file_table_list
+{
+  display: block;
+  margin: 0; padding: 0;
+  list-style-position: inside;
+  width: 100%;
+  li
+  {
+    border-top: 1px dotted #eee;
+    border-bottom: 1px dotted #eee;
+    border-collapse: collapse;
+    div
+    {
+      display: inline-block;
+      width: 28%;
+/*
+      &:first-child
+      {
+        width: 3%;
+      }
+*/
+    }
+  }
+  input
+  {
+    width: 90%;
+  }
+}
+
+ul.bates_file_table_list
+{
+  list-style-type: circle;
+  li:first-child
+  {
+    background: $table_header_background;
+    color: $table_header_color;
+    font-family: $header_font;    
+  }
+}
+
+
+/* RESPONSIVE RELATED */
+
+@media screen and (max-width: $responsive_limit) {
+  /* STYLING CONTENT (none at the moment)*/
+  body, html
+  {
+    height: auto;
+  }
+  #content {
+    padding: 3em 0;
+    margin: 0;
+    .print, .no_print {
+      margin: 0 $small_screen_margin;
+      height: auto;
+    }
+    #notice {
+      margin: 0.2em $small_screen_margin;
+    }
+    .hide_when_small
+    {
+      display: none;
+    }
+    .action_button_hover {
+      position: absolute;
+      left: inherit;
+      right: 0.5em;
+      top: 0.5em;
+      &:hover
+      {
+        position: absolute;
+        left: inherit;
+        right: 0.5em;
+        top: 0.5em;
+      }
+    }
+  }
+  body.he #content a.action_button_hover {
+    left: 0.5em;
+    right: inherit;
+    &:hover {
+      left: 0.5em;
+      right: inherit;
+    }
+  }
+  /* STYLING FORMS */
+  form {
+    margin: 0 $small_screen_margin;
+  }
+
+}
+
+
+
+/* PRINTING STYLES */
+
+
+@media print {
+  html, body {
+    height: auto;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    font-size: 12px;
+    background: #fff;
+    color: #000;
+  }
+  body.he
+  {
+    direction: rtl;
+  }
+  #nav {
+    display: none;
+  }
+  #content {
+    background: #fff;
+    color: #000;
+    overflow: visible;
+    .no_print, .hide_from_print, form, #notice, .hide, .action_button_hover, .action_button
+    {
+      display: none;
+    }
+    h1, h2, h3, p, div
+    {
+      display: none;
+    }
+    .print
+    {
+      background: #fff;
+      color: #000;
+      display: block !important;
+      width: auto;
+      padding: 1em;
+      margin: 1em;
+      overflow: visible;
+      height: auto;
+      page-break-after: always;
+      page-break-inside: auto;
+      &:last-child
+      {
+        page-break-after: auto;
+      }
+      * {
+        background: #fff;
+        color: #000;
+      }
+      a {
+        text-decoration: none;
+      }
+      h1, h2, h3
+      {
+        background: #eee;
+      }
+      h1, h2, h3, p, div
+      {
+        display: block;
+        a {
+          color: #000;
+          background: transparent;
+        }
+      }
+      thead
+      {
+        display: table-header-group;
+      }
+     table
+      {
+        width: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+        th
+        {
+          background: #eee;
+          text-align: center;
+          border-collapse: collapse;
+          border: none;
+          color:  #000;
+          a {
+            color: #000;
+            background: transparent;
+          }
+        }
+        td
+        {
+          border-collapse: collapse;
+          border-top: #999 solid 1px;
+          border-bottom: #999 solid 1px;      
+          width: 2%;
+          text-overflow: ellipsis;
+          a {
+            color: #000;
+            background: transparent;
+          }
+        }
+      }
+     }
+ }
+
+
+ 
+}

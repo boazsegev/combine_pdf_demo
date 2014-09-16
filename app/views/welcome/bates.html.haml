@@ -1,0 +1,138 @@
+.no_print
+  %h1= t :bates_title
+  %p!= @extra
+  %h1#dropzone{ style: 'font-size:2em; text-align:center; color:#fee; background-color:#7b2635;  background-image:url(/assets/drop-pdf.png); background-repeat:no-repeat; background-position:10% center; background-size: auto 100%;'}
+    = t :bates_drag
+  %ol.bates_file_table_list#demo{style: 'display:none;'}
+    %li#file_NUM
+      %div
+        = text_field :file_NUM, :name, value: 'FILE_NAME', readonly: 'readonly'
+        = hidden_field :file_NUM, :data, value: 'NUM'
+      %div= text_field :file_NUM, :date, value: 'DATE'
+      %div= text_field :file_NUM, :title, value: 'TITLE'  
+      |||
+      <a href="#" onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;' style='float:#{(I18n.locale == :he)?('left'):('right')}'>[x]</a>
+= form_tag do_bates_path, :multipart => true, :onsubmit=>"onSubmit()" do |f|
+  %ul.bates_file_table_list
+    %li
+      %div= t :bates_file_name
+      %div= t :bates_date
+      %div= t :bates_file_title
+  %ol.bates_file_table_list#file_list
+  %h2
+    אפשרויות מתקדמות
+  \<input type="submit" value="Submit">
+
+  :javascript
+    function onSubmit()
+    {
+      return true;
+    }
+    file_i=0
+    files_read = 0
+
+    template = document.getElementById('demo').innerHTML
+
+    function transform_file(file)
+    {
+      // Get Time and Title if the name matches standard naming
+      obj_date_string = file.name.match("^[0-9]*") + ""
+      if(obj_date_string.length != 8) obj_date_string = null
+      if(obj_date_string)
+      {
+        obj_date = obj_date_string.substr(6,2) + "." + obj_date_string.substr(4,2) + "." + obj_date_string.substr(0,4)
+        obj_description = file.name.substring(9, file.name.toLowerCase().search("\.pdf") )
+      }
+      else
+      {
+        obj_date = ""
+        obj_description = file.name.substring(0, file.name.toLowerCase().search("\.pdf") )
+      }
+
+      // copy template and adjust details
+
+      document.getElementById('file_list').innerHTML += template.replace(RegExp("NUM", "g"), "" + file_i).replace(RegExp("FILE_NAME", "g"), file.name).replace(RegExp("DATE", "g"), obj_date).replace(RegExp("TITLE", "g"), obj_description)
+
+      // set reader for file
+      reader = new FileReader();
+      reader.futureObject = document.getElementById("file_" + file_i + "_data")
+
+      file_i += 1;
+
+      reader.onloadend = function(e)
+      {
+        //var id = this.futureObject.value
+        console.log("adding result to: " + this.futureObject.id )
+        document.getElementById(this.futureObject.id).value = e.target.result
+        files_read +=1
+      }
+      
+      //reader.readAsText(file)
+      reader.readAsDataURL(file)
+      true
+    }
+
+    // make drop_zone droppable and set callbacks
+    var dropzone = document.getElementById('dropzone')
+
+    dropzone.ondragend = function (event) {event.stopPropagation();return false; };
+    dropzone.ondragover = function (event) {event.stopPropagation();return false; };
+    dropzone.ondragenter = function (event) {event.stopPropagation();return false; };
+
+    dropzone.ondrop = function(event) {
+      event.preventDefault()
+      event.stopPropagation();
+      var files = event.dataTransfer.files; // FileList object.
+      i = 0
+      while(files[i])
+      {
+        console.log('transforming:' + files[i] + ' name: ' + files[i].name.toLowerCase())
+        if( files[i].name.toLowerCase().search("\.pdf") != -1) transform_file(files[i])
+        i++
+      }
+
+      set_list_sotrable()
+      return false;
+    }
+
+    // make drag-drop and sortable list from file_list
+    var Dragged_id = ''
+
+    function start_drag_list_item(e) {
+      Dragged_id = this.id
+      e.dataTransfer.setData('text/plain', this.id)
+      this.style.opacity = '0.3'
+    }
+    function end_drag_list_item(e) {
+      this.style.opacity = '1'
+      Dragged_id = ''
+    }
+    function enter_drag_list_item(e) {
+      if(Dragged_id == '') return false;
+      if(this.id == Dragged_id) return false; //this.style.opacity = '0.7'
+      this.parentNode.insertBefore(this.parentNode.removeChild(document.getElementById(Dragged_id)), this);
+    }
+    function leave_drag_list_item(e) {
+      if(Dragged_id == '') return false;
+      if(this.id != Dragged_id) this.style.opacity = '1'
+    }
+    function drop_list_item(e)
+    {
+      e.stopPropagation()
+      e.preventDefault()
+      alert('move ' + Dragged_id + ' before ' + this.id)
+      if (this.id == Dragged_id) return false;
+    }
+    function set_list_sotrable()
+    {
+      all_list_items = document.querySelectorAll('#file_list li');
+      for(i=0; i < all_list_items.length; i++)
+      {
+        all_list_items[i].setAttribute("draggable","true");
+        all_list_items[i].ondragstart = start_drag_list_item
+        all_list_items[i].ondragenter = enter_drag_list_item
+        all_list_items[i].ondragleave = leave_drag_list_item
+        all_list_items[i].ondragend = end_drag_list_item
+        all_list_items[i].ondrop = drop_list_item
+      }
+    }
