@@ -1,8 +1,9 @@
 .no_print
   %h1= t :bates_title
   %p!= @extra
-  %h1#dropzone{ style: 'font-size:2em; text-align:center; color:#fee; background-color:#7b2635;  background-image:url(/assets/drop-pdf.png); background-repeat:no-repeat; background-position:10% center; background-size: auto 100%;'}
+  %h1#dropzone
     = t :bates_drag
+  %p
   %ol.bates_file_table_list#demo{style: 'display:none;'}
     %li#file_NUM
       %div

@@ -11,10 +11,10 @@
 		%label.show-menu{for: "show-menu"}
 		%input#show-menu{role: "button", type: "checkbox"}/
 		%nav#nav{role: "navigation"}
-			%ul#menu
-				%li
-					= link_to 'Welcome', welcome_path
-				%li
+			%ul#menu>
+				%li>
+					= link_to 'The Project', welcome_path
+				%li>
 					%a{href: "#"} Examples
 					%ul
 						%li
@@ -29,9 +29,9 @@
 							= link_to "Writing Tables", tables_path
 						%li
 							= link_to "The Amazing Bates", bates_path
-				%li
+				%li>
 					= link_to 'Code on GitHub', "https://github.com/boazsegev/combine_pdf"
-				%li
+				%li>
 					= link_to 'Documentation', "http://rubydoc.info/gems/combine_pdf/"
 		#content
 			- if flash[:notice]
