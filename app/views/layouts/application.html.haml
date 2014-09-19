@@ -13,26 +13,26 @@
 		%nav#nav{role: "navigation"}
 			%ul#menu>
 				%li>
-					= link_to 'The Project', welcome_path
+					= link_to t(:home_page), welcome_path
 				%li>
-					%a{href: "#"} Examples
+					%a{href: "#"}= t(:examples)
 					%ul
 						%li
-							= link_to 'Merge PDF Files', combine_path
+							= link_to t(:merge_example), combine_path
 						%li
-							= link_to "Number PDF pages", number_path
+							= link_to t(:number_example), number_path
 						%li
-							= link_to "Add a Logo (stamp)", stamp_path
+							= link_to t(:logo_example), stamp_path
 						%li
-							= link_to "Unicode and Fonts", fonts_path
+							= link_to t(:fonts_example), fonts_path
 						%li
-							= link_to "Writing Tables", tables_path
+							= link_to t(:table_example), tables_path
 						%li
-							= link_to "The Amazing Bates", bates_path
+							= link_to t(:bates_example), bates_path
 				%li>
-					= link_to 'Code on GitHub', "https://github.com/boazsegev/combine_pdf"
+					= link_to t(:github), "https://github.com/boazsegev/combine_pdf"
 				%li>
-					= link_to 'Documentation', "http://rubydoc.info/gems/combine_pdf/"
+					= link_to t(:documentation), "http://rubydoc.info/gems/combine_pdf/"
 		#content
 			- if flash[:notice]
 				#notice

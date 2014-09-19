@@ -29,8 +29,11 @@ gem 'spring',        group: :development
 #use HAML
 gem 'haml-rails'
 
+# CodeRay for syntex highlighting. use: html = CodeRay.scan("puts 'Hello, world!'", :ruby).div(:line_numbers => :table)
+gem 'coderay'
 # My own PDF Merge gem
 gem 'combine_pdf'#, path: "../combine_pdf"
+
 
 
 # PDF Decrypt for CombinePDF

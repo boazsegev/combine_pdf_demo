@@ -5,10 +5,13 @@ Rails.application.routes.draw do
   get 'number' => 'welcome#number'
   get 'tables' => 'welcome#tables'
   get 'fonts' => 'welcome#fonts'
-
-
   get 'bates' => 'welcome#bates'
-  post 'do_bates' => 'welcome#do_bates'
+  get 'combine' => 'welcome#combine'
+  get 'stamp' => 'welcome#stamp'
+  get 'number' => 'welcome#number'
+  get 'tables' => 'welcome#tables'
+  get 'fonts' => 'welcome#fonts'
+  post 'bates' => 'welcome#bates'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

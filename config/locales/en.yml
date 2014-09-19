@@ -21,6 +21,48 @@
 
 en:
   hello: "Hello world"
+  #menu
+  home_page: "About the Project"
+  examples: "PDF examples"
+  documentation: "Documentation"
+  github: "GitHub Project"
+  merge_example: "Merge PDF files"
+  logo_example: "Add a logo (stamp)"
+  number_example: "Number Pages"
+  fonts_example: "Unicode and fonts"
+  table_example: "Table of contents"
+  bates_example: "The Amazing Bates"
+  # welcome page
+  welcome_page: |
+    h1. Merge/combine PDF files, stamp pages, add page numbers, write content...
+
+    combine_pdf is a pure Ruby gem that will help you merge/combine PDF files, add page numbers or a company logo, add simple content and do so much more.
+
+    h2. Why a PDF gem?
+
+    I started this project because I needed to bates stamp PDF files. For that I needed to merge PDF files together, add a title page before each file, add a table of contents at the begining and number the pages...
+
+    The only thing was, I could find a ruby solution - nor a free solution.
+
+    Using tools such as PDFTK (and friends) required that I save the data to disk. I was getting the data in from a web form, saving the data was just a hussle. Also, I had to combine different tools for one (simple?) task... and last bu not least, I had to leave Ruby behind and start experimenting with system calls and installation dependencies...
+
+    I hated it.
+
+    So I wrote the combine_pdf gem, with a beautiful CombinePDF model.
+
+    Now I love it!
+
+    h2. Let's get started
+  
+    Let me show you how simple and easy it is to work with this library.
+  
+    Together we will walk, step by step, through the bates demo web-app.
+ 
+    Building this app together we will learn how to combine/merge PDF files from a web form, how to add numbering and a company logo, how to add fonts and a table of contents and finally how to put it all together.
+
+    Let's get started!
+  # code
+  code_install: "gem install combine_pdf"
 
 #bates
   bates_title:  'Bates Numbering'
@@ -35,3 +77,4 @@ en:
   bates_pdf_index: 'Index'
   bates_file_unsupported_error: "One of the PDF files isn't supported - cannot parse:"
   bates_unknown_zero_pages_error: 'Unknown error - merged pdf file is empty.'
+  bates_file_encrypted_error: "One of the PDF files isn't supported - cannot parse:"
