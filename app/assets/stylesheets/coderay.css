@@ -95,9 +95,9 @@ table.CodeRay td { padding: 2px 4px; vertical-align: top; }
 .CodeRay .predefined-type { color:#0a8; font-weight:bold }
 .CodeRay .preprocessor { color:#579 }
 .CodeRay .pseudo-class { color:#00C; font-weight:bold }
-.CodeRay .regexp { background-color:hsla(300,100%,50%,0.06); }
-.CodeRay .regexp .content { color:#808 }
-.CodeRay .regexp .delimiter { color:#404 }
+.CodeRay .regexp {  }
+.CodeRay .regexp .content { color:#afa }
+.CodeRay .regexp .delimiter { color:#5f5 }
 .CodeRay .regexp .modifier { color:#C2C }
 .CodeRay .reserved { color:#080; font-weight:bold }
 .CodeRay .shell { background-color:hsla(120,100%,50%,0.06); }
