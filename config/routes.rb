@@ -1,16 +1,7 @@
 Rails.application.routes.draw do
   get 'welcome' => 'welcome#welcome'
-  get 'combine' => 'welcome#combine'
-  get 'stamp' => 'welcome#stamp'
-  get 'number' => 'welcome#number'
-  get 'tables' => 'welcome#tables'
-  get 'fonts' => 'welcome#fonts'
+  get 'code' => 'welcome#code'
   get 'bates' => 'welcome#bates'
-  get 'combine' => 'welcome#combine'
-  get 'stamp' => 'welcome#stamp'
-  get 'number' => 'welcome#number'
-  get 'tables' => 'welcome#tables'
-  get 'fonts' => 'welcome#fonts'
   post 'bates' => 'welcome#bates'
 
   # The priority is based upon order of creation: first created -> highest priority.

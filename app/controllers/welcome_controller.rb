@@ -2,11 +2,18 @@ class WelcomeController < ApplicationController
   def initialize
     super
 
+    @code_ray_options = {tab_width: 2, line_numbers: :inline, css: :class}
     @fonts_code = <<ENDCODE
   # register UNICODE fonts if necessary
+  # in this example I will register the Hebrew font David
+  # from an existing PDF file.  
   unless CombinePDF::Fonts.get_font :david
     fonts = CombinePDF.new(Rails.root.join("app", "assets", "fonts", "david+bold.pdf").to_s).fonts(true)
+    # I know the first font is David regular, after using the
+    # ruby console and looking at the fonts array
     CombinePDF.register_font_from_pdf_object :david, fonts[0]
+    # the second font of the array was the latin font for a newline and space... useless
+    # the third was the david bold. I will now add that font.
     CombinePDF.register_font_from_pdf_object :david_bold, fonts[2]
   end
 ENDCODE
@@ -17,8 +24,8 @@ ENDCODE
   # number pages
 
   # set the first visible page number to the page where numbering starts
-  # this assumes that the bates numbering include the numbering of the "cover page", yet
-  # at the same time the numbering isn't visible on the "cover page"
+  # this assumes that the bates numbering include the numbering of the "cover page",
+  # yet at the same time the numbering isn't visible on the "cover page"
   first_page_number += pdfs_pages_count[0] if params[:first_page_is_cover]
 
   # call the page numbering method and
@@ -118,12 +125,7 @@ ENDCODE
 ENDCODE
 
 
-    @bates_code = <<ENDCODE
-#{@fonts_code}
-
-#{@combine_code}
-
-
+    @stub_bates_code = <<ENDCODE
   ##########
   # create the index pdf
 
@@ -134,7 +136,7 @@ ENDCODE
   #
   # also, add an empty array for the table data.
   #
-  # the table data array will containg arrays of String objects, each one
+  # the table data array will contain arrays of String objects, each one
   # corresponding to a row in the table.
   table_options = {  font: :david,
     header_font: :david_bold,
@@ -143,7 +145,8 @@ ENDCODE
     table_data: [] }
 
   # set the table header array.
-  # this is an array of strings. we will use the I18n .t shortcut to chose the strings
+  # this is an array of strings. we will use the I18n .t shortcut
+  # to chose the localized strings
   table_options[:headers] = [ (t :bates_pdf_file),
     (t :bates_pdf_date),
     (t :bates_pdf_title),
@@ -231,6 +234,7 @@ ENDCODE
 #{@number_pages_code}
 
 ENDCODE
+    @bates_code = @fonts_code + "\n" + @combine_code + "\n" + @stub_bates_code
 
     @code = <<ENDCODE
 # There is no action to perform without any files.
@@ -305,15 +309,40 @@ begin
 
 rescue Exception => e
   # if an exception was raised, tell the user which PDF caused the exception
-  redirect_to bates_url, notice: ( I18n.t(:bates_file_unsupported_error) + "\n\#{file_name}")
+  redirect_to bates_url, notice: ( I18n.t(:bates_file_unsupported_error) + "\\n\#{file_name}")
 end
 ENDCODE
+  @code_wrapper = @code.gsub(@bates_code, "############\n# MY CODE WILL GO HERE\n############")
+  @stub_combine = <<ENDCODE
+  # container for the complete pdf
+  # the complete pdf container will hold all
+  # the merged pdf data.
+  completed_pdf = CombinePDF.new
+
+  # itirate through the files array - this is stub code to be completed later:
+  files.each do |file|
+      # parse the pdf data
+      # we will use the CombinePDF.parse method which allows us
+      # to parse data without saving the PDF to the file system.
+      # the data was saved in the form using base64, which we will need to decode.
+      # (this is specific to my form which uses HTML5 File API)
+      pdf_file = CombinePDF.parse(
+        Base64.urlsafe_decode64(
+          v[:data].slice( "data:application/pdf;base64,".length,
+            v[:data].length )) )
+      completed_pdf << pdf_file
+  end
+
+  # send the data WITHOUT saving to the file system
+  send_data completed_pdf.to_pdf, type: 'application/pdf', filename: output_name
+ENDCODE
+    @code_without_remarks = (@code.lines.delete_if {|l| l =~ /^[\s]*\#[\w\s]*/}).join
   end
   def welcome
     @content = t(:welcome_page)
     @content.gsub! "combine_pdf", ("\"combine_pdf\":https://rubygems.org/gems/combine_pdf")
     @content.gsub! "bates", ("\"bates\":%s" % bates_path)
-    @content.gsub! /Let's get started!/, ("\"Let’s get started!\":%s" % combine_path)
+    @content.gsub! /Let's get started!/, ("\"Let’s get started!\":%s" % code_path)
     render inline: RedCloth.new( @content ).to_html, layout: true
   end
 
@@ -321,7 +350,7 @@ ENDCODE
     eval @code
   end
 
-  def stamp
+  def code
   end
 
   def number

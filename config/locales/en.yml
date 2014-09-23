@@ -23,7 +23,8 @@ en:
   hello: "Hello world"
   #menu
   home_page: "About the Project"
-  examples: "PDF examples"
+  examples: "The Amazing Bates"
+  code: "the controller's code"
   documentation: "Documentation"
   github: "GitHub Project"
   merge_example: "Merge PDF files"
@@ -31,7 +32,7 @@ en:
   number_example: "Number Pages"
   fonts_example: "Unicode and fonts"
   table_example: "Table of contents"
-  bates_example: "The Amazing Bates"
+  bates_example: "See it work!"
   # welcome page
   welcome_page: |
     h1. Merge/combine PDF files, stamp pages, add page numbers, write content...

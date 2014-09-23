@@ -1,7 +1,3 @@
-.print
-  %h1 The code
-  %p The following is the code for the bates method in the controller:
-  != preserve { CodeRay.scan(@code, :ruby).div(tab_width: 2, line_numbers: :inline, css: :class) } #(:line_numbers => :table)
 .no_print
   %h1= t :bates_title
   %p!= @extra

@@ -1,0 +1,50 @@
+.print.en
+  %h1 The code
+  %p I wrote the combine_pdf gem for a project I was working on, where we had to bates-stamp papers for court submissions.
+  %p for this I needed to be able to combine PDF files... something similar to:
+  != preserve { CodeRay.scan("(CombinePDF('file1.pdf') << CombinePDF('file2.pdf') << CombinePDF('file3.pdf') ).save 'output.pdf'", :ruby).div(@code_ray_options) }
+  %p After combining them, I needed to stamp overlay each page of my PDF with the bates number...
+  %p at the begining I created a PDF with Prawn (amazing ruby library) and overlayed each page... but then I decided that numbering pages should be too common a task to delegate on...
+  %p this is what my code will look like in the end (I removed the remarks and explanations, you will see them soon):
+  != preserve { CodeRay.scan(@code_without_remarks , :ruby).div(@code_ray_options) }
+  %p Oh... how did it get so long?
+  %h2 Combining PDF data over the web
+  %p for my bates project, PDF data isn't a file, but rather a Base64 string passed over from a web form. so I will need to adjust my code for that... let's do something like:
+  != preserve { CodeRay.scan(@stub_combine , :ruby).div(@code_ray_options) }
+  %p I will need to change that code to add a few features, but that would be the basic upon which I build.
+  %p also, I don't want to write a file just to send it over the web... so I will have to format the data using the .to_pdf method and send it as a stream of data.
+  %p now, I need to actually stump each page with the bates number...
+  %h2 Numbering Pages
+  %p this is actually very easy. building on the textbox method of the PDFWriter class, PDF objects have their own .number_pages method. I just need to decide how I want it to look :)
+  %p this is final code. it includes a feature I will add later on and is rather important for the project, which is a "cover page PDF":
+  != preserve { CodeRay.scan(@number_pages_code , :ruby).div(@code_ray_options) }
+  %p now for the interesting bits...
+  %h2 title pages, table of contents and error handling
+  %p a few hings I will need to add will be error handling and title pages.
+  %p for this I need...
+  %h2 Fonts and Unicode
+  %p My project required Hebrew support - this is a language that requires unicode and right to left writing support...
+  %p fonts are a very complicated subject - moreso for PDF files... BUT, I already have fonts in PDF files that I use... CombinePDF let's me use these existing fonts and move them between files.
+  %p in fact, the CombinePDF library has a registry for fonts. once a font is registered, it can be used in any CombinePDF file.
+  %p so, I took fonts from an existing PDF file (I do it only once):
+  != preserve { CodeRay.scan(@fonts_code, :ruby).div(@code_ray_options) }
+  %p Once I had the fonts in place, I will be...
+  %h2 Writing a Title Page for each file
+  %p to write a title page, I will need to place the data I recieve from by web form into the new title page and then add that page to the new PDF... so, for each page, I will do this:
+  != preserve { CodeRay.scan(@title_page_code, :ruby).div(@code_ray_options) }
+  %h2 The complete page merging code
+  %p so, now my stub code, with my added features and title pages will look like this:
+  != preserve { CodeRay.scan(@combine_code, :ruby).div(@code_ray_options) }
+  %p now it's time to add...
+  %h2 A Table of Contents
+  %p while itirating the file array, I collected data for a table of contents. now I just need to organize the data.
+  %p writing the actual table of contents is easy. Using the CombinePDF.new_table, I will create a new PDF with a tabe filled with the data I want.
+  != preserve { CodeRay.scan(@stub_bates_code, :ruby).div(@code_ray_options) }
+  %p before we put it all together, we need some...
+  %h2 Error handlings
+  %p I needed to set up some variables that will hold some of the data for future features I needed. Especially, I need to set up a variable that will tell me which file caused an exception to be raised...
+  != preserve { CodeRay.scan(@code_wrapper, :ruby).div(@code_ray_options) }
+  %p now that I have error handling and font support, I will be...
+  %h2 Puttinf everything together
+  %p The following is the code for the bates method in the controller:
+  != preserve { CodeRay.scan(@code, :ruby).div(@code_ray_options) }
