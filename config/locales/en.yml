@@ -33,6 +33,9 @@ en:
   fonts_example: "Unicode and fonts"
   table_example: "Table of contents"
   bates_example: "See it work!"
+  bates_options: 'Advanced Bates Options'
+  bates_first_page_number: 'First bates number'
+  bates_first_pdf_is_cover: 'First PDF is cover'
   # welcome page
   welcome_page: |
     h1. Merge/combine PDF files, stamp pages, add page numbers, write content...

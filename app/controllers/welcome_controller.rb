@@ -51,7 +51,6 @@ ENDCODE
         # if the first PDF file is a "cover page" PDF,
         # we will not add a title, nor add the file.
         # instead we will save the data in a variable to add it after we're done
-        ignore_first_file = false
         pdf_dates << ""
         pdf_titles << ""
         first_page = pdf_file
@@ -128,9 +127,6 @@ ENDCODE
     @stub_bates_code = <<ENDCODE
   ##########
   # create the index pdf
-
-  # reset the variable, as it might have changed during itiration.
-  ignore_first_file = params[:first_pdf_is_cover]
 
   # set the fonts and formatting for the table of contents.
   #
@@ -257,14 +253,15 @@ begin
   output_name = ( Date.today.strftime '%Y%m%d output.pdf' )
 
   # get some paramaters that will be used while combining pages
-  first_page_number = params[:first_page_number] || 1
-  first_index_number = params[:first_index_number] || 1
+  params[:bates] ||= {}
+  first_page_number = params[:bates][:first_page_number] || 1
+  first_index_number = params[:bates][:first_index_number] || 1
 
   # we will add an option for the stamping to ignore the first pdf
   # this is useful for the court cases that use bates numbering
   # (the "cover PDF" will be the briefs of submissions that contain exhibits to be bates stamped)
-  params[:first_pdf_is_cover] ||= false
-  ignore_first_file = params[:first_pdf_is_cover]
+  params[:bates][:first_pdf_is_cover] ||= false
+  ignore_first_file = (params[:bates][:first_pdf_is_cover] == "1")
   first_page = nil
 
   # we will pick some data up while running combining
@@ -282,7 +279,7 @@ begin
 #{@bates_code}
 
   # add first file if it was skipped
-  if params[:first_page_is_cover] && !first_page.nil?
+  if !first_page.nil?
     completed_pdf >> first_page
   end
 

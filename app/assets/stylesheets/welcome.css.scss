@@ -780,7 +780,17 @@ ul.bates_file_table_list
   }
 }
 
-
+input[type=checkbox]:checked#bates_first_pdf_is_cover ~ {
+  ol.bates_file_table_list
+  {
+    li:first-child
+    {
+      background: $notice_background;
+      color: $notice_color;
+      font-family: $header_font;    
+    }
+  }
+}
 /* RESPONSIVE RELATED */
 
 @media screen and (max-width: $responsive_limit) {

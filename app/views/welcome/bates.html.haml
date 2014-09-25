@@ -19,9 +19,15 @@
       %div= t :bates_file_name
       %div= t :bates_date
       %div= t :bates_file_title
+  = check_box :bates, :first_pdf_is_cover, checked: true
+  = label :bates, :first_pdf_is_cover, (t :bates_first_pdf_is_cover)
   %ol.bates_file_table_list#file_list
-  %h2
-    Options
+  \<input type="submit" value="Submit">
+  %h2= t :bates_options
+  %table
+    %tr
+      %td= t :bates_first_page_number
+      %td
   \<input type="submit" value="Submit">
 
   :javascript
