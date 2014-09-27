@@ -32,7 +32,7 @@ gem 'haml-rails'
 # CodeRay for syntex highlighting. use: html = CodeRay.scan("puts 'Hello, world!'", :ruby).div(:line_numbers => :table)
 gem 'coderay'
 # My own PDF Merge gem
-gem 'combine_pdf'#, path: "../combine_pdf"
+gem 'combine_pdf', '~> 0.1.5'#, path: "../combine_pdf"
 
 
 
