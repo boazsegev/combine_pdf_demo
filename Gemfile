@@ -1,59 +1,92 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
+
+####################
+# core gems
+
+# include the basic plezi framework and server
+gem 'plezi'
+
+# combine_pdf gem for this demo app
+gem 'combine_pdf'
+
+####################
+# development gems
+
+# use pry gem for basic debug ( put `binding.pry` at breake point )?
+# gem 'pry'
 
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.4'
-# Use postgresql as the database for Active Record
+# active support can run without rails and extends the Ruby language.
+# it might be heavy, be warned.
+# see: http://guides.rubyonrails.org/active_support_core_extensions.html
+# 
+# gem 'activesupport', :require => ['active_support', 'active_support/core_ext'] 
+# or:
+# gem 'activesupport', :require => ['active_support', active_support/all'] 
+
+
+####################
+# gems for easy markup
+
+## Slim is very recommended for HTML markup, it's both easy and fast.
+gem 'slim'
+
+## Sass makes CSS easy
+gem "sass"
+
+## erb for HTML fanatics:
+# gem 'erb'
+
+## we love Haml, even though it can be slow:
+# gem 'haml'
+
+## and maybe coffee script? (although, we just use javascript, really)
+# gem "coffee-script"
+
+####################
+# Internationalization
+
+## I18n is the only one I know of.
+gem 'i18n'
+
+####################
+# WebSocket Scaling
+
+## redis servers are used to allow websocket scaling.
+## the :broadcast and :collect methods will work only for the current process.
+## using Redis, we can publish messages and subscribe to 'chunnels' across processes
+# (limited support for :broadcast and NO support for :collect while Redis is running).
+
+# gem 'redis'
+
+####################
+# gems for databases and models
+
+## if you want to use a database, here are a few common enough options:
+# gem 'mysql2'
+# gem 'sqlite3'
 # gem 'pg'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+## MongoDB is a very well known NoSQL DB
+## https://github.com/mongodb/mongo-ruby-driver
+# gem 'mongo'
+## for a performance boost, the C extentions can be used (NOT JRuby - bson_ext isn't used with JRuby).
+# gem 'bson_ext'
+## you can also have a look at the Mongo Mapper ORM
+## http://mongomapper.com
+# gem 'mongo_mapper'
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+## someone told me good things about sequel:
+## http://sequel.jeremyevans.net/rdoc/files/README_rdoc.html
+## http://sequel.jeremyevans.net/rdoc/files/doc/cheat_sheet_rdoc.html
+## this seems greate, but we left out any auto-config for this one... seems to work out of the box.
+# gem 'sequel'
 
-#use HAML
-gem 'haml-rails'
-
-# CodeRay for syntex highlighting. use: html = CodeRay.scan("puts 'Hello, world!'", :ruby).div(:line_numbers => :table)
-gem 'coderay'
-# My own PDF Merge gem
-gem 'combine_pdf', '~> 0.1.5'#, path: "../combine_pdf"
-
-
-
-# PDF Decrypt for CombinePDF
-gem 'ruby-rc4'
-
-# RedCloth for dynamic web pages and textilizing options
-gem 'RedCloth'
-
-# Use ActiveModel has_secure_password
+## if you want to use ActiveRecord, uncomment the following line(s)...
+## but first, please remember that AcriveRecord needs extra attention when multi-threading
+# gem 'activerecord', :require => 'active_record'
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use unicorn as the app server
-# gem 'unicorn'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-
-# Heroku
-gem 'rails_12factor', group: :production
-ruby "2.1.2"
+ruby '2.2.0'
