@@ -311,13 +311,13 @@ class PDFController
 			else
 		
 				# inform the client there was an unknown error.
-				redirect_to bates_url, notice: (I18n.t :bates_unknown_zero_pages_error)
+				redirect_to '', notice: (I18n.t :bates_unknown_zero_pages_error)
 			end
 		
 		rescue Exception => e
 			PL.error e
 			# if an exception was raised, tell the user which PDF caused the exception
-			redirect_to bates_url, notice: ( I18n.t(:bates_file_unsupported_error) + "\n#{file_name}")
+			redirect_to '', notice: ( I18n.t(:bates_file_unsupported_error) + "\n#{file_name}")
 			return true
 		end
 	end
