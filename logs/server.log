@@ -1,0 +1,9 @@
+# Logfile created on 2015-03-07 22:04:21 -0500 by logger.rb/47272
+I, [2015-03-07T22:04:21.623581 #36010]  INFO -- : Started listening on port 3000.
+127.0.0.1 [2015-03-08 03:04:25 UTC] "GET / http/1.1" 200 12832 45.838ms
+127.0.0.1 [2015-03-08 03:04:41 UTC] "POST /bates http/1.1" 200 297023 46.881ms
+127.0.0.1 [2015-03-08 03:06:49 UTC] "GET / http/1.1" 200 12832 0.670ms
+I, [2015-03-07T22:10:39.872014 #36010]  INFO -- : Stopping services
+I, [2015-03-07T22:10:39.872238 #36010]  INFO -- : Stoped listening on port 3000
+I, [2015-03-07T22:10:39.872309 #36010]  INFO -- : Stopping connections
+I, [2015-03-07T22:10:39.872359 #36010]  INFO -- : Waiting for workers to cycle down
