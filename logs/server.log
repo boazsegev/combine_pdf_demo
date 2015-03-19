@@ -7,3 +7,65 @@ I, [2015-03-07T22:10:39.872014 #36010]  INFO -- : Stopping services
 I, [2015-03-07T22:10:39.872238 #36010]  INFO -- : Stoped listening on port 3000
 I, [2015-03-07T22:10:39.872309 #36010]  INFO -- : Stopping connections
 I, [2015-03-07T22:10:39.872359 #36010]  INFO -- : Waiting for workers to cycle down
+I, [2015-03-18T20:26:47.549397 #14562]  INFO -- : Started listening on port 3000.
+I, [2015-03-18T20:26:47.574981 #14562]  INFO -- : Dynamicly reseting the Class routing cache.
+I, [2015-03-18T20:26:47.575205 #14562]  INFO -- : Dynamicly reseting the Class routing cache.
+I, [2015-03-18T20:26:47.575429 #14562]  INFO -- : Dynamicly reseting the Class routing cache.
+I, [2015-03-18T20:26:47.575636 #14562]  INFO -- : Dynamicly reseting the Class routing cache.
+I, [2015-03-18T20:27:53.152736 #14562]  INFO -- : Stopping services
+I, [2015-03-18T20:27:53.152990 #14562]  INFO -- : Stoped listening on port 3000
+I, [2015-03-18T20:27:53.153085 #14562]  INFO -- : Stopping connections
+I, [2015-03-18T20:27:53.153140 #14562]  INFO -- : Waiting for workers to cycle down
+I, [2015-03-18T20:27:56.203387 #14695]  INFO -- : Started listening on port 3000.
+127.0.0.1 [2015-03-19 00:28:13 UTC] "GET / http/1.1" 200 12859 49.431ms
+127.0.0.1 [2015-03-19 00:28:13 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.773ms
+127.0.0.1 [2015-03-19 00:28:15 UTC] "GET / http/1.1" 200 12859 1.062ms
+127.0.0.1 [2015-03-19 00:28:57 UTC] "GET / http/1.1" 200 12894 27.691ms
+127.0.0.1 [2015-03-19 00:28:57 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.466ms
+127.0.0.1 [2015-03-19 00:29:19 UTC] "GET / http/1.1" 200 12922 27.353ms
+127.0.0.1 [2015-03-19 00:29:19 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.756ms
+127.0.0.1 [2015-03-19 00:29:41 UTC] "GET / http/1.1" 200 12922 29.847ms
+127.0.0.1 [2015-03-19 00:29:41 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.545ms
+127.0.0.1 [2015-03-19 00:30:03 UTC] "GET / http/1.1" 200 12918 29.394ms
+127.0.0.1 [2015-03-19 00:30:03 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.723ms
+127.0.0.1 [2015-03-19 00:30:42 UTC] "GET / http/1.1" 200 12919 28.648ms
+127.0.0.1 [2015-03-19 00:30:56 UTC] "GET / http/1.1" 200 12919 29.200ms
+127.0.0.1 [2015-03-19 00:30:56 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 1.418ms
+127.0.0.1 [2015-03-19 00:31:23 UTC] "GET / http/1.1" 200 12919 30.847ms
+127.0.0.1 [2015-03-19 00:31:23 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.453ms
+127.0.0.1 [2015-03-19 00:31:45 UTC] "GET / http/1.1" 200 12919 38.021ms
+127.0.0.1 [2015-03-19 00:31:45 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.476ms
+127.0.0.1 [2015-03-19 00:31:55 UTC] "GET / http/1.1" 200 12919 26.745ms
+127.0.0.1 [2015-03-19 00:31:55 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.533ms
+127.0.0.1 [2015-03-19 00:32:27 UTC] "GET / http/1.1" 200 12919 27.695ms
+127.0.0.1 [2015-03-19 00:32:27 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.447ms
+127.0.0.1 [2015-03-19 00:33:03 UTC] "GET / http/1.1" 200 12919 27.554ms
+127.0.0.1 [2015-03-19 00:33:03 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.502ms
+127.0.0.1 [2015-03-19 00:33:05 UTC] "GET / http/1.1" 200 12919 0.714ms
+127.0.0.1 [2015-03-19 00:33:05 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.518ms
+127.0.0.1 [2015-03-19 00:34:21 UTC] "GET / http/1.1" 200 12931 30.467ms
+127.0.0.1 [2015-03-19 00:34:21 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.779ms
+127.0.0.1 [2015-03-19 00:35:59 UTC] "GET / http/1.1" 200 12812 30.248ms
+127.0.0.1 [2015-03-19 00:35:59 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 1.102ms
+127.0.0.1 [2015-03-19 00:38:46 UTC] "GET / http/1.1" 200 13118 28.429ms
+127.0.0.1 [2015-03-19 00:38:46 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.518ms
+127.0.0.1 [2015-03-19 00:41:55 UTC] "GET / http/1.1" 200 12982 29.470ms
+127.0.0.1 [2015-03-19 00:41:55 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.557ms
+127.0.0.1 [2015-03-19 00:42:27 UTC] "GET / http/1.1" 200 12892 27.080ms
+127.0.0.1 [2015-03-19 00:42:27 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.527ms
+127.0.0.1 [2015-03-19 00:42:54 UTC] "GET / http/1.1" 200 12892 34.761ms
+127.0.0.1 [2015-03-19 00:42:54 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.546ms
+127.0.0.1 [2015-03-19 00:44:04 UTC] "GET / http/1.1" 200 12937 26.947ms
+127.0.0.1 [2015-03-19 00:44:04 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.555ms
+127.0.0.1 [2015-03-19 00:44:08 UTC] "GET / http/1.1" 200 12937 0.743ms
+127.0.0.1 [2015-03-19 00:44:08 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.468ms
+127.0.0.1 [2015-03-19 00:44:20 UTC] "GET / http/1.1" 200 12932 27.204ms
+127.0.0.1 [2015-03-19 00:44:20 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.535ms
+127.0.0.1 [2015-03-19 00:44:33 UTC] "GET / http/1.1" 200 12932 37.032ms
+127.0.0.1 [2015-03-19 00:44:33 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.495ms
+127.0.0.1 [2015-03-19 00:44:45 UTC] "GET / http/1.1" 200 12937 29.416ms
+127.0.0.1 [2015-03-19 00:44:45 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.513ms
+127.0.0.1 [2015-03-19 00:45:15 UTC] "GET / http/1.1" 200 12983 33.245ms
+127.0.0.1 [2015-03-19 00:45:15 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.478ms
+127.0.0.1 [2015-03-19 00:47:16 UTC] "GET / http/1.1" 200 12990 27.270ms
+127.0.0.1 [2015-03-19 00:47:16 UTC] "GET /images/drop-pdf.png http/1.1" 200 6508 0.597ms

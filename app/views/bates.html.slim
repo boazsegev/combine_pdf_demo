@@ -11,21 +11,24 @@ head
       background: #ddddea;
     }
 
-    h1, h2, h3 {
+    h2, h3 {
       font-size: 1.2em;
-      border-radius: 0.5em;
       background: #aab;
     }
 
     h1 {
       font-size: 1.5em;
       text-align: center;
+      background: #000;
+      color: #eee;
+      margin:0; padding: 0.5em;
     }
     h2 {
-      text-align: left;
+      border-radius: 0.5em;
+      text-align: center;
     }
     h3 {
-      text-align: right;
+      text-align: left;
     }
     .hide {
       display: none !important;
@@ -213,13 +216,13 @@ head
       font-size: 2em;
       text-align: center;
       color: #111111;
-      background-color: #aae;
+      background-color: #99a;
       padding: 0.5em 0;
       background-image: url(/images/drop-pdf.png);
       background-repeat: no-repeat;
       background-position: 10% center;
       background-size: auto 100%;
-      border-radius: 1em;
+      border-radius: 0.5em 0.5em 0 0;
     }
 
     ul.bates_file_table_list, ol.bates_file_table_list {
@@ -285,9 +288,9 @@ head
       }
     }
 body
+  h1 Combine / Merge PDF Files
   #contents
     .desc
-      h1 Combine / Merge PDF Files
       p
         |This is a demo for the 
         a href='https://github.com/boazsegev/combine_pdf' combine_pdf gem
@@ -300,7 +303,6 @@ body
         |This demo runs on 
         a href='https://github.com/boazsegev/plezi' the Plezi ruby web-app framework
         |, which is very easy to use, supports Websockets and live Streaming and has some wonderful features that gave this demo application a quick start. Porting the code into your Rails project should be easy, but might require some minor adjustments.
-    h1#dropzone Drag PDF files here
     p
     ol.bates_file_table_list#demo style='display:none;'
       li#file_NUM
@@ -314,10 +316,8 @@ body
         |||
         a href="#" onclick='this.parentNode.parentNode.removeChild(this.parentNode); return false;' style='float:#{(I18n.locale == :he)?('left'):('right')}' [x]
     form accept-charset="UTF-8" action="#{params[:locale] ? "/" + params[:locale] : ''}/bates" enctype="multipart/form-data" method="post" onsubmit="onSubmit()"
-      h1
-        | PDF files about to be processed by the 
-        a href='https://github.com/boazsegev/combine_pdf' combine_pdf gem
-        |:
+      h1#dropzone Drag PDF files here
+      p
       ul.bates_file_table_list
         li
           div File Name
@@ -328,7 +328,9 @@ body
         | First PDF file is a prefix (won't be indexed).
       ol.bates_file_table_list#file_list
       input type="submit" value="Submit"
-      h2 More Options
+      h3
+        | More Options for the 
+        a href='https://github.com/boazsegev/combine_pdf' combine_pdf gem
       table
         tr
           td Output file name:
@@ -351,8 +353,9 @@ body
         tr
           td
             input checked="checked" id="bates_should_index_files" name="bates[should_index]" type="checkbox" value="true"  
-            |  Index Files
-          td un-check to avoid an index and title pages.
+            label for='bates_should_index_files'  Index Files
+          td
+            label for='bates_should_index_files' un-check to avoid an index and title pages.
         tr
           td Text Direction:
           td
