@@ -95,10 +95,14 @@ head
     .desc, form {
       text-align: justify;
       display: block;
-      margin: 0 15%; padding: 0 0 0.5em 0;
+      margin: 0.5em 15%; padding: 0 0 0.5em 0;
       background: #eeeefa;
       color: #111111;
       border-radius: 1em;
+    }
+    .with_border
+    {
+      border: 1px solid #aab;
     }
     .desc p, form p {
       padding: 0.2em;
@@ -215,7 +219,7 @@ head
     h1#dropzone {
       font-size: 2em;
       text-align: center;
-      color: #111111;
+      color: #fff;
       background-color: #99a;
       padding: 0.5em 0;
       background-image: url(/images/drop-pdf.png);
@@ -283,27 +287,22 @@ head
       #content .hide_when_small {
         display: none;
       }
-      form {
-        margin: 0 1em;
+      form, .desc {
+        margin: 0.3em 1em;
       }
     }
 body
   h1 Combine / Merge PDF Files
   #contents
-    .desc
+    .desc.with_border
       p
         |This is a demo for the 
         a href='https://github.com/boazsegev/combine_pdf' combine_pdf gem
-        |  - a pure ruby solution that helps you merge, combine and index PDF files.
-      p
-        |The 
-        a href='https://github.com/boazsegev/combine_pdf'  combine_pdf gem
-        |  also allows for simple PDF content manipulations, such as stamping PDF pages, adding page numbers, adding textboxes / simple text and rotating pages.
+        |  - a pure ruby solution that helps you merge, combine, index PDF files and more.
       p
         |This demo runs on 
         a href='https://github.com/boazsegev/plezi' the Plezi ruby web-app framework
-        |, which is very easy to use, supports Websockets and live Streaming and has some wonderful features that gave this demo application a quick start. Porting the code into your Rails project should be easy, but might require some minor adjustments.
-    p
+        |, which is very easy to use and supports Websockets (much like socket.io for node.js). Porting the code into your Rails project should be easy, but might require some minor adjustments.
     ol.bates_file_table_list#demo style='display:none;'
       li#file_NUM
         div

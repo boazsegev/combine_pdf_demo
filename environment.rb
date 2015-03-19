@@ -21,7 +21,7 @@ require 'bundler'
 Bundler.require
 
 # set up Plezi logs - Heroku logs to STDOUT, this machine logs to log file
-Plezi.create_logger File.expand_path(File.join 'logs','server.log'), ENV["RACK_ENV"]=="development" unless ENV['DYNO']
+# Plezi.create_logger File.expand_path(File.join 'logs','server.log'), ENV["RACK_ENV"]=="development" unless ENV['DYNO']
 
 # load all config files
 Dir[File.join "{config}", "**" , "*.rb"].each {|file| load File.expand_path(file)}
