@@ -14,6 +14,16 @@ head
     h2, h3 {
       font-size: 1.2em;
       background: #aab;
+      color: #fafafa;
+    }
+    h2 a, h3 a
+    {
+      color: inherit;
+      text-decoration: none;
+    }
+    h2 a:hover, h3 a:hover
+    {
+      color: #00f;
     }
 
     h1 {
@@ -302,7 +312,8 @@ body
       p
         |This demo runs on 
         a href='https://github.com/boazsegev/plezi' the Plezi ruby web-app framework
-        |, which is very easy to use and supports Websockets (much like socket.io for node.js). Porting the code into your Rails project should be easy, but might require some minor adjustments.
+        |, which is very easy to use and supports native Websockets (much like socket.io for node.js).
+      p Porting the code into your Rails project should be easy, but might require some minor adjustments.
     ol.bates_file_table_list#demo style='display:none;'
       li#file_NUM
         div
