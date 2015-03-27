@@ -109,7 +109,7 @@ class PDFController
 						# write the content to the title page.
 						# we will be using the I18n.t shortcut to write some of the data.
 						# the rest of the data, like the title, we got from the form.
-						title_page.textbox( "#{params[:bates][:title_type]} #{pdfs_pages_count.length + first_index_number - 1}" ,
+						title_page.textbox( "#{params[:bates][:title_type]} #{pdfs_pages_count.length + first_index_number - (ignore_first_file ? 2 : 1)}" ,
 							max_font_size: 34,
 							font: :david,
 							y: (mediabox[3] - mediabox[1])/2 ) unless params[:bates][:title_type].to_s.empty?
