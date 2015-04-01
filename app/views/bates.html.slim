@@ -49,6 +49,62 @@ head
       text-align: left;
       width: auto;
     }
+    #notice
+    {
+      z-index: 99999;
+      position: absolute;
+      top: 0; left: 0;
+      background-color: rgba(0, 0, 0, 0.75);
+      box-sizing: border-box;
+      padding: 1em 0;
+      text-align: center;
+      height: 100px;
+      width: 100%;
+      overflow-y: auto;
+      color: #fff; font-weight: bold;
+      transition:All 0.25s ease;
+      -webkit-transition:All 0.25s ease;
+      -moz-transition:All 0.25s ease;
+      -o-transition:All 0.25s ease;
+      -ms-transition:All 0.25s ease;
+      transform-origin: 0 50%;
+      -webkit-transform-origin: 50% 0; /* Chrome, Safari, Opera */
+      -ms-transform-origin: 50% 0; /* IE 9 */
+      -moz-transform-origin: 50% 0;
+      -o-transform-origin: 50% 0;
+      transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      -moz-transform: scale(1, 1);
+      -o-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+    }
+    #notice.hidden
+    {
+      transform: scale(1, 0);
+      -webkit-transform: scale(1, 0);
+      -moz-transform: scale(1, 0);
+      -o-transform: scale(1, 0);
+      -ms-transform: scale(1, 0);
+    }
+    #notice .notice_close
+    {
+      display:block;
+      position: absolute;
+      top:0; left:0;
+      padding:0.5em;
+      height:100%;
+      width:5em;
+      text-align:left;
+      cursor: pointer;
+      border-right:1px solid #eee;
+      color: #ccc;
+    }
+    #notice .notice_close:hover
+    {
+      color: #eee;
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
     #content {
       background: #ddddea;
       color: #111;
@@ -301,8 +357,26 @@ head
         margin: 0.3em 1em;
       }
     }
+  javascript:
+    function show_notice()
+    {
+      document.getElementById("notice").classList.remove('hidden');
+    }
+    function hide_notice()
+    {
+      document.getElementById("notice").classList.add('hidden');
+    }
 body
   h1 Combine / Merge PDF Files
+  - if defined?(@notice) && @notice
+    #notice
+      a.notice_close onclick='hide_notice()' X
+      div#notice_text
+        pre= @notice
+  - else
+    #notice.hidden
+      a.notice_close onclick='hide_notice()' X
+      div#notice_text
   #contents
     .desc.with_border
       p

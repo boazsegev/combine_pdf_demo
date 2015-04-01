@@ -2,6 +2,7 @@ class PDFController
 	def index
 		@bates_numbering = %w{Center Left Right}
 		@bates_numbering << "None (merge without indexing)"
+		@notice = flash[:notice]
 		render :bates
 	end
 
@@ -316,6 +317,7 @@ class PDFController
 		
 		rescue Exception => e
 			PL.error e
+			PL.error "The file causing the exception is: #{file_name}"
 			# if an exception was raised, tell the user which PDF caused the exception
 			redirect_to '', notice: ( I18n.t(:bates_file_unsupported_error) + "\n#{file_name}")
 			return true
