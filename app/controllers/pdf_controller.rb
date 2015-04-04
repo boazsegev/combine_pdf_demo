@@ -72,6 +72,7 @@ class PDFController
 				# to parse data without saving the PDF to the file system.
 				# our javascript encoded the file data using base64, which we will need to decode.
 				# (this is specific to my form which uses the HTML5 File API in this specific manner)
+				PL.info "parsing file: #{file_name}"
 				pdf_file = CombinePDF.parse(
 					Base64.urlsafe_decode64(
 						v[:data].slice( "data:application/pdf;base64,".length,
@@ -114,8 +115,8 @@ class PDFController
 							max_font_size: 34,
 							font: :david,
 							y: (mediabox[3] - mediabox[1])/2 ) unless params[:bates][:title_type].to_s.empty?
-						title_page.textbox v[:title], max_font_size: 36, font: :david_bold
-						title_page.textbox v[:date], max_font_size: 24, font: :david, height: (mediabox[3] - mediabox[1])/2
+						title_page.textbox v[:title].to_s, max_font_size: 36, font: :david_bold
+						title_page.textbox v[:date].to_s, max_font_size: 24, font: :david, height: (mediabox[3] - mediabox[1])/2
 		
 						# we will add the page object to the completed pdf object.
 						# notice that page objects are created as "floating" pages,
@@ -126,8 +127,8 @@ class PDFController
 						# table of contents at a later stage.
 						page_count = pdfs_pages_count.pop + 1
 						pdfs_pages_count << page_count
-						pdf_dates << v[:date]
-						pdf_titles << v[:title]
+						pdf_dates << v[:date].to_s
+						pdf_titles << v[:title].to_s
 					end
 	
 	
@@ -160,8 +161,8 @@ class PDFController
 				# to chose the localized strings
 				table_options[:headers] = [ params[:bates][:number_header] , # (I18n.t :bates_pdf_file),
 					(params[:bates][:date_header].to_s.empty? ? nil : params[:bates][:date_header]),
-					params[:bates][:title_header],
-					params[:bates][:page_header] ]
+					params[:bates][:title_header].to_s,
+					params[:bates][:page_header].to_s ]
 				table_options[:headers].compact!
 			
 				# by default, there are 25 rows per page for table pdf created by CombinePDF
