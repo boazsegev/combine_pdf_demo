@@ -20,6 +20,10 @@ ENV["RACK_ENV"] ||= "development"
 require 'bundler'
 Bundler.require
 
+# if ENV["RACK_ENV"] == "development"
+# 	$LOAD_PATH << '/Users/2Be/Ruby/combine_pdf/lib/'
+# 	load 'combine_pdf.rb'
+# end
 # set up Plezi logs - Heroku logs to STDOUT, this machine logs to log file
 # Plezi.create_logger File.expand_path(File.join 'logs','server.log'), ENV["RACK_ENV"]=="development" unless ENV['DYNO']
 

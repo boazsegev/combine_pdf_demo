@@ -51,15 +51,15 @@ class PDFController
 		
 			# register UNICODE fonts if necessary
 			# in this example I will register the Hebrew font David from an existing PDF file.  
-			unless CombinePDF::Fonts.get_font :david
+			unless CombinePDF::Fonts.get_font :my_new_david
 				# if your running Rails, consider Rails.root instead of Root
 				fonts = CombinePDF.new(Root.join("public", "fonts", "david+bold.pdf").to_s).fonts(true)
 				# I know the first font is David regular, after using the
 				# ruby console and looking at the fonts array for the file.
-				CombinePDF.register_font_from_pdf_object :david, fonts[0]
+				CombinePDF.register_font_from_pdf_object :my_new_david, fonts[0]
 				# the second font of the array was the latin font for a newline and space... useless
 				# the third was the david bold. I will now add that font.
-				CombinePDF.register_font_from_pdf_object :david_bold, fonts[2]
+				CombinePDF.register_font_from_pdf_object :my_new_david_bold, fonts[2]
 			end
 		
 			# itiriate through the different data sent from the client's browser's web form
@@ -113,10 +113,10 @@ class PDFController
 						# the rest of the data, like the title, we got from the form.
 						title_page.textbox( "#{params[:bates][:title_type]} #{pdfs_pages_count.length + first_index_number - (ignore_first_file ? 2 : 1)}" ,
 							max_font_size: 34,
-							font: :david,
+							font: :my_new_david,
 							y: (mediabox[3] - mediabox[1])/2 ) unless params[:bates][:title_type].to_s.empty?
-						title_page.textbox v[:title].to_s, max_font_size: 36, font: :david_bold
-						title_page.textbox v[:date].to_s, max_font_size: 24, font: :david, height: (mediabox[3] - mediabox[1])/2
+						title_page.textbox v[:title].to_s, max_font_size: 36, font: :my_new_david_bold
+						title_page.textbox v[:date].to_s, max_font_size: 24, font: :my_new_david, height: (mediabox[3] - mediabox[1])/2
 		
 						# we will add the page object to the completed pdf object.
 						# notice that page objects are created as "floating" pages,
@@ -150,8 +150,8 @@ class PDFController
 				#
 				# the table data array will contain arrays of String objects, each one
 				# corresponding to a row in the table.
-				table_options = {  font: :david,
-					header_font: :david_bold,
+				table_options = {  font: :my_new_david,
+					header_font: :my_new_david_bold,
 					max_font_size: 12,
 					column_widths:  (params[:bates][:date_header].to_s.empty? ? [3, 40, 4] : [3, 10, 30, 4]),
 					table_data: [] }
@@ -246,7 +246,7 @@ class PDFController
 					title_page.textbox params[:bates][:index_title],
 						{ y: ((title_page.mediabox[3] - title_page.mediabox[1])*0.91),
 							height: ((title_page.mediabox[3] - title_page.mediabox[1])*0.03),
-							font: :david,
+							font: :my_new_david,
 							max_font_size: 24,
 							text_valign: :bottom  }
 				
@@ -273,7 +273,7 @@ class PDFController
 				# call the page numbering method and
 				# add the special properties we want for the textbox
 				completed_pdf.number_pages({ start_at: first_page_number,
-					font_name: :david,
+					font_name: :my_new_david,
 					font_size: 14,
 					font_color: [0,0,0.4],
 					box_color: [0.8, 0.8, 0.8],
