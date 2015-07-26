@@ -9,7 +9,8 @@
 	# Dir.chdir Root.to_s
 	## load code from a subfolder called 'code'
 	# Dir[File.join "{code}", "**" , "*.rb"].each {|file| load File.expand_path(file)}
-	load Root.join('pdf_controller.rb').to_s
+	# load Root.join('pdf_controller.rb').to_s
+	Dir[File.join File.dirname(__FILE__), "*.rb"].each {|file| load File.expand_path(file) unless file == __FILE__}
 
 	## If this app is independant, use bundler to load gems (including the plezi gem).
 	## Else, use the original app's Gemfile and start Plezi's Rack mode.
