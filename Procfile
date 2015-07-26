@@ -1,2 +1,2 @@
 
-web: bundle exec ./pdfdemo -p $PORT
+web: bundle exec ruby ./demo -p $PORT

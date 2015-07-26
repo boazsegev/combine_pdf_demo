@@ -53,7 +53,7 @@ class PDFController
 			# in this example I will register the Hebrew font David from an existing PDF file.  
 			unless CombinePDF::Fonts.get_font :my_new_david
 				# if your running Rails, consider Rails.root instead of Root
-				fonts = CombinePDF.new(Root.join("public", "fonts", "david+bold.pdf").to_s).fonts(true)
+				fonts = CombinePDF.new(Root.join("assets", "fonts", "david+bold.pdf").to_s).fonts(true)
 				# I know the first font is David regular, after using the
 				# ruby console and looking at the fonts array for the file.
 				CombinePDF.register_font_from_pdf_object :my_new_david, fonts[0]
