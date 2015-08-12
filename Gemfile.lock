@@ -1,13 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    combine_pdf (0.2.2)
+    combine_pdf (0.2.4)
       ruby-rc4 (>= 0.1.5)
-    greactor (0.0.12)
-    grhttp (0.0.21)
-      greactor (~> 0.0.12)
-    plezi (0.10.16)
-      grhttp (~> 0.0.21)
+    greactor (0.0.14)
+    grhttp (0.0.23)
+      greactor (~> 0.0.14)
+    plezi (0.10.17)
+      grhttp (~> 0.0.23)
     ruby-rc4 (0.1.5)
     slim (3.0.6)
       temple (~> 0.7.3)
