@@ -326,13 +326,6 @@ class PDFController
 	end
 
 	def code
-		redirect_to 'https://github.com/boazsegev/combine_pdf_demo/blob/master/app/controllers/pdf_controller.rb'
-	end
-	protected
-
-	def link_to text, path, options={}
-		extra = ""
-		options.each {|k,v| extra << " #{k}='#{v}'"}
-		"<a href='#{path}'#{extra}>#{text}</a>"
+		redirect_to 'https://github.com/boazsegev/combine_pdf_demo/blob/c9914588e4116dcfdaa37f85727f442b064e2b04/pdf_controller.rb'
 	end
 end
