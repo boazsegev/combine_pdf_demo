@@ -10,4 +10,4 @@ gem 'slim'
 gem 'combine_pdf'
 # gem 'i18n'
 
-ruby '2.2.2'
+ruby '2.2.3'

@@ -11,8 +11,7 @@ class PDFController
 		return redirect_to '' unless params[:file] && params[:file][0]
 
 		# catch any exception and tell the user which PDF caused the exception.
-		begin
-		
+		begin		
 			# set the file_name variable
 			# this will be used in case an exception is caught
 			# to state which file caused the exception.
@@ -66,17 +65,22 @@ class PDFController
 			params[:file].each do |k,v|
 				# set the file_name variable in case an exception will be raised
 				file_name = v[:name]
-	
+
 				# parse the pdf data
 				# we will use the CombinePDF.parse method which allows us
 				# to parse data without saving the PDF to the file system.
 				# our javascript encoded the file data using base64, which we will need to decode.
 				# (this is specific to my form which uses the HTML5 File API in this specific manner)
-				PL.info "parsing file: #{file_name}"
-				pdf_file = CombinePDF.parse(
-					Base64.urlsafe_decode64(
-						v[:data].slice( "data:application/pdf;base64,".length,
-							v[:data].length )) )
+				# begin
+					PL.info "parsing file: #{file_name}"
+					pdf_file = CombinePDF.parse(
+						Base64.urlsafe_decode64(
+							v[:data].slice( "data:application/pdf;base64,".length,
+								v[:data].length )) )
+				# rescue
+				# 	puts "Failed when parsing #{file_name} with data:\n#{v[:data].inspect}"
+				# 	raise
+				# end
 	
 				# we will use the pages array a few times, so in order to avoid
 				# recomputing the array every time, we will save it to a local variable.
@@ -313,14 +317,14 @@ class PDFController
 			else
 		
 				# inform the client there was an unknown error.
-				redirect_to '', notice: (I18n.t :bates_unknown_zero_pages_error)
+				redirect_to '', notice: ("Unknown error - 0 pages.")
 			end
 		
 		rescue Exception => e
 			PL.error e
 			PL.error "The file causing the exception is: #{file_name}"
 			# if an exception was raised, tell the user which PDF caused the exception
-			redirect_to '', notice: ( I18n.t(:bates_file_unsupported_error) + "\n#{file_name}")
+			redirect_to '', notice: ( "Unsupported or error reading file:\n#{file_name}")
 			return true
 		end
 	end
