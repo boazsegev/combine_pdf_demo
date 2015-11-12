@@ -3,9 +3,9 @@ GEM
   specs:
     combine_pdf (0.2.11)
       ruby-rc4 (>= 0.1.5)
-    iodine (0.1.10)
-    plezi (0.12.7)
-      iodine (~> 0.1.10)
+    iodine (0.1.12)
+    plezi (0.12.11)
+      iodine (~> 0.1.12)
     ruby-rc4 (0.1.5)
     slim (3.0.6)
       temple (~> 0.7.3)
