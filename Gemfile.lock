@@ -1,11 +1,11 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    combine_pdf (0.2.12)
+    combine_pdf (0.2.13)
       ruby-rc4 (>= 0.1.5)
-    iodine (0.1.17)
-    plezi (0.12.17)
-      iodine (~> 0.1.17)
+    iodine (0.1.18)
+    plezi (0.12.18)
+      iodine (~> 0.1.18)
     ruby-rc4 (0.1.5)
     slim (3.0.6)
       temple (~> 0.7.3)
