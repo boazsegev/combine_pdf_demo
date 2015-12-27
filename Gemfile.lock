@@ -5,7 +5,7 @@ GEM
       ruby-rc4 (>= 0.1.5)
     iodine (0.1.20)
     plezi (0.12.21)
-      iodine (~> 0.1.19)
+      iodine (~> 0.1.20)
     ruby-rc4 (0.1.5)
     slim (3.0.6)
       temple (~> 0.7.3)
@@ -22,4 +22,4 @@ DEPENDENCIES
   slim
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
