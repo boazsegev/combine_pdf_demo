@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boazsegev/iodine.git
-  revision: ca607732b3366c273e4c184042f9c4ea61c6b31d
+  revision: a47fd5799050d3d904eeeee1cdc49f7f21519711
   specs:
     iodine (0.2.0)
       rack
@@ -16,7 +16,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    combine_pdf (0.2.27)
+    combine_pdf (0.2.30)
       ruby-rc4 (>= 0.1.5)
     rack (2.0.1)
     rake (11.2.2)
@@ -26,8 +26,8 @@ GEM
     slim (3.0.7)
       temple (~> 0.7.6)
       tilt (>= 1.3.3, < 2.1)
-    temple (0.7.6)
-    tilt (1.4.1)
+    temple (0.7.7)
+    tilt (2.0.5)
 
 PLATFORMS
   ruby
