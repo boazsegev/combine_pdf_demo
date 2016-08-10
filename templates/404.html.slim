@@ -113,8 +113,9 @@ head
 body
 	h1 Plezi 404 error code (missing, not broken)...
 	#wrapper
+		- puts params
 		h2#missing
 			| couldn't find 
-			=< defined?(request) ? request.path : "what you're looking for..."
+			=< request.path_info
 		p Sorry, we couldn't find what you're looking for...
 		p ... but we can always bring you something nice from another location, right?
