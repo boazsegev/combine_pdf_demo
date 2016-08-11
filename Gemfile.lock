@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boazsegev/iodine.git
-  revision: 8da13c3f35e39b3b1dd0b8e0abe7935d6801f3c1
+  revision: 4c25a295e1d72059f818fc133f587b0fe801a4eb
   specs:
     iodine (0.2.0)
       rack
