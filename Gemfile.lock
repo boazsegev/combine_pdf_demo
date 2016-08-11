@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/boazsegev/iodine.git
-  revision: 0042529fb2a9a34fe162c4c6dc9dadca8c76485b
+  revision: 8da13c3f35e39b3b1dd0b8e0abe7935d6801f3c1
   specs:
     iodine (0.2.0)
       rack
@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: https://github.com/boazsegev/plezi.git
-  revision: 64034d90da442eeae08c3f7c09aab2e5d2596118
+  revision: 2cd4b80d8fd6027db85c3b25cb2f8eff976c408a
   specs:
     plezi (0.14.0)
       iodine (~> 0.2.0)
