@@ -26,3 +26,5 @@ Plezi.templates = Root.join('templates').to_s
 
 # Add your routes and controllers by order of priority.
 Plezi.route '/', PDFController
+
+Iodine::Rack.log = 1
