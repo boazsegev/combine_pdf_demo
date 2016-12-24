@@ -1,26 +1,16 @@
-GIT
-  remote: https://github.com/boazsegev/iodine.git
-  revision: a5e24545c4d7095047b4aab47a597bf52042855e
-  specs:
-    iodine (0.2.0)
-      rack
-      rake-compiler
-
-GIT
-  remote: https://github.com/boazsegev/plezi.git
-  revision: dc7313de3aef3513fa5f156492b32bb9864aff55
-  specs:
-    plezi (0.14.0)
-      iodine (~> 0.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
-    combine_pdf (0.2.30)
+    combine_pdf (0.2.32)
       ruby-rc4 (>= 0.1.5)
+    iodine (0.2.4)
+      rack
+      rake-compiler
+    plezi (0.14.2)
+      iodine (~> 0.2, >= 0.2.1)
     rack (2.0.1)
-    rake (11.2.2)
-    rake-compiler (1.0.1)
+    rake (11.3.0)
+    rake-compiler (1.0.2)
       rake
     ruby-rc4 (0.1.5)
     slim (3.0.7)
@@ -34,9 +24,9 @@ PLATFORMS
 
 DEPENDENCIES
   combine_pdf
-  iodine!
-  plezi!
+  iodine
+  plezi
   slim
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
