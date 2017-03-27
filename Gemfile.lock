@@ -1,9 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    combine_pdf (0.2.35)
+    combine_pdf (0.2.36)
       ruby-rc4 (>= 0.1.5)
-    iodine (0.2.14)
+    iodine (0.2.15)
       rack
       rake-compiler
     plezi (0.14.4)
