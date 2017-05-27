@@ -1,25 +1,25 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    combine_pdf (0.2.36)
+    combine_pdf (1.0.0)
       ruby-rc4 (>= 0.1.5)
-    iodine (0.2.15)
+    iodine (0.3.2)
       rack
-      rake-compiler
-    plezi (0.14.4)
-      bundler (~> 1.13)
-      iodine (~> 0.2, >= 0.2.7)
+      rake-compiler (>= 1)
+    plezi (0.14.7)
+      bundler (~> 1.14)
+      iodine (~> 0.3, >= 0.3.0)
       rack (>= 2.0.0)
-    rack (2.0.1)
+    rack (2.0.3)
     rake (12.0.0)
     rake-compiler (1.0.3)
       rake
     ruby-rc4 (0.1.5)
-    slim (3.0.7)
-      temple (~> 0.7.6)
+    slim (3.0.8)
+      temple (>= 0.7.6, < 0.9)
       tilt (>= 1.3.3, < 2.1)
-    temple (0.7.7)
-    tilt (2.0.6)
+    temple (0.8.0)
+    tilt (2.0.7)
 
 PLATFORMS
   ruby
@@ -31,4 +31,4 @@ DEPENDENCIES
   slim
 
 BUNDLED WITH
-   1.14.4
+   1.14.6
