@@ -3,7 +3,7 @@ GEM
   specs:
     combine_pdf (1.0.7)
       ruby-rc4 (>= 0.1.5)
-    iodine (0.4.12)
+    iodine (0.4.15)
       rack (>= 1.0, < 3.0)
     plezi (0.15.0)
       bundler (~> 1.14)
